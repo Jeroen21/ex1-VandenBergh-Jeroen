@@ -8,16 +8,17 @@
     <!--Externe hulp gevraagd voor dit gedeelte-->
 </head>
 
+<!--alles wordt als een string op het schermpje gezet. String wordt uitgelezen als waarde. Dus als daar "5+5" sta dan ga die effectief de waarde berekenen van 5+5 vanaf het moment da er op "=" gedrukt wordt. Daarvoor doe die niks-->
 <script>
     var main = function () {
         $('.calculator').on('click', '.number', function () {
-            $("input").val($("input").val() + $(this).data("no"));
+            $("input").val($("input").val() + $(this).data("no")); //Het terugsturen van de input value op display
         })
         $('.calculator').on('click', '.equal', function () {
-            $("input").val(eval($("input").val()));
+            $("input").val(eval($("input").val())); // het oplossen van de geteruggestuurde input values met eval. Deze kijkt naar de operatoren en waardes en berekent dit met eval functie
         })
         $('.calculator').on('click', '.clear', function () {
-            $("input").val("");
+            $("input").val(""); //Basic reset.
         })
     }
     $("document").ready(main); //Gaf fout melding. Externe hulp gevraagd

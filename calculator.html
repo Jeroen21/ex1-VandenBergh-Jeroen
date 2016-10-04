@@ -1,59 +1,130 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-<TITLE>Javascript Calculator</TITLE>
-<link type="text/css" rel="stylesheet" href="calculator.css" />
-<!-- CSS Initiatie -->
 
-<script type="text/javascript">
-    var globaal = "",
-        Eerste = "",
-        Tweede = "",
-        Opperator = "";
-    //Initiatie van het javascript met variabele
-    function Init() {
-        Reset();
-    }
-    //oproepen van de reset bij pagina load
+<head>
+    <TITLE>Javascript Calculator</TITLE>
+    <link type="text/css" rel="stylesheet" href="calculator.css" />
+    <!-- CSS Initiatie -->
 
-
-    function Click($key) {
-        var Display = "";
-        if (Opperator == "") {
-            Eerste = Eerste + $key;
-            document.getElementById('screen').innerHTML = Eerste;
-        } else {
-            Tweede = Tweede + $key;
-            Display = document.getElementById('screen').innerHTML;
-            document.getElementById('screen').innerHTML = Eerste + ' ' + Opperator + ' ' + Tweede;
+    <script type="text/javascript">
+        var globaal = "",
+            Eerste = "",
+            Tweede = "",
+            Opperator = "";
+        //Initiatie van het javascript met variabele
+        function Init() {
+            Reset();
         }
-    }
+        //oproepen van de reset bij pagina load
 
-    function Operator($sign) {
-        var Display = "";
-        Opperator = $sign; // Om te zien of er al values in de 2 eerste getallen staan
-        if (Eerste != "" && Tweede != "") DoSum();
-        Display = document.getElementById('screen').innerHTML;
-        document.getElementById('screen').innerHTML = Display + ' ' + Opperator + ' ';
-    }
 
-    function Reset() {
-        Eerste = "";
-        Tweede = "";
-        Opperator = "";
-        globaal = "";
-        document.getElementById('screen').innerHTML = '0';
-    }
+        function Click($key) //kijkt welke key er wordt ingedrukt 
+        {
+            var Display = "";
+            if (Opperator == "") {
+                Eerste = Eerste + $key;
+                document.getElementById('scherm').innerHTML = Eerste;
+            } else {
+                Tweede = Tweede + $key;
+                Display = document.getElementById('scherm').innerHTML;
+                document.getElementById('scherm').innerHTML = Eerste + ' ' + Opperator + ' ' + Tweede;
+            }
+        }
 
-    function Calc() {
-        var string;
-        resultaat = 0;
-        if (Eerste != "" && Tweede != "" && Opperator != "") {
-            string = Eerste + ' ' + Opperator + ' ' + Tweede;
-            globaal = eval(string);
-            document.getElementById('screen').innerHTML = globaal; // RESET 
-            Eerste = globaal;
+        function Operator($sign) {
+            var Display = "";
+            Opperator = $sign; // Om te zien of er al values in de 2 eerste getallen staan
+            if (Eerste != "" && Tweede != "") DoSum();
+            Display = document.getElementById('scherm').innerHTML;
+            document.getElementById('scherm').innerHTML = Display + ' ' + Opperator + ' ';
+        }
+
+        function Reset() {
+            Eerste = "";
             Tweede = "";
             Opperator = "";
+            globaal = "";
+            document.getElementById('scherm').innerHTML = '0';
         }
-    }
-</script>
+
+        function Calc() {
+            var string;
+            resultaat = 0;
+            if (Eerste != "" && Tweede != "" && Opperator != "") {
+                string = Eerste + ' ' + Opperator + ' ' + Tweede;
+                globaal = eval(string);
+                document.getElementById('scherm').innerHTML = globaal; // RESET 
+                Eerste = globaal;
+                Tweede = "";
+                Opperator = "";
+            }
+        }
+    </script>
+</head>
+
+<body onload="init()">
+    <div id="frame">
+        <div id="window">
+            <div id="scherm"></div>
+        </div>
+        <div id="key1" onclick="Click(1)">
+            <div id="digit">1</div>
+        </div>
+        <div id="key2" onclick="Click(2)">
+            <div id="digit">2</div>
+        </div>
+        <div id="key3" onclick="Click(3)">
+            <div id="digit">3</div>
+        </div>
+        <div id="plus" onclick="Operator('+')">
+            <div id="digit">+</div>
+        </div>
+        <div id="key4" onclick="Click(4)">
+            <div id="digit">4</div>
+        </div>
+        <div id="key5" onclick="Click(5)">
+            <div id="digit">5</div>
+        </div>
+        <div id="key6" onclick="Click(6)">
+            <div id="digit">6</div>
+        </div>
+        <div id="key7" onclick="Click(7)">
+            <div id="digit">7</div>
+        </div>
+        <div id="key8" onclick="Click(8)">
+            <div id="digit">8</div>
+        </div>
+        <div id="key9" onclick="Click(9)">
+            <div id="digit">9</div>
+        </div>
+        <div id="min" onclick="Operator('-')">
+            <div id="digit">-</div>
+        </div>
+        <div id="key0" onclick="Click(0)">
+            <div id="digit">0</div>
+        </div>
+        <div id="komma" onclick="Click('.')">
+            <div id="digit">.</div>
+        </div>
+        <div id="gelijk" onclick="Calc()">
+            <div id="digit">=</div>
+        </div>
+        <div id="vermenigvuldig" onclick="Operator('*')">
+            <div id="digit">*</div>
+        </div>
+        <div id="gedeeld" onclick="Operator('/')">
+            <div id="digit">/</div>
+        </div>
+        <div id="reset" onclick="Reset()">
+            <div id="digit">C</div>
+        </div>
+
+
+
+    </div>
+
+    <div id="all" style="position:absolute; left:10px; top:500px"></div>
+
+</body>
+
+</html>

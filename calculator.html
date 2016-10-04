@@ -14,13 +14,6 @@
         Reset();
     }
     //oproepen van de reset bij pagina load
-    function Reset() {
-        Eerste = "";
-        Tweede = "";
-        Opperator = "";
-        globaal = "";
-        document.getElementById('screen').innerHTML = '0';
-    }
 
 
     function Click($key) {
@@ -41,5 +34,26 @@
         if (Eerste != "" && Tweede != "") DoSum();
         Display = document.getElementById('screen').innerHTML;
         document.getElementById('screen').innerHTML = Display + ' ' + Opperator + ' ';
+    }
+
+    function Reset() {
+        Eerste = "";
+        Tweede = "";
+        Opperator = "";
+        globaal = "";
+        document.getElementById('screen').innerHTML = '0';
+    }
+
+    function Calc() {
+        var string;
+        resultaat = 0;
+        if (Eerste != "" && Tweede != "" && Opperator != "") {
+            string = Eerste + ' ' + Opperator + ' ' + Tweede;
+            globaal = eval(string);
+            document.getElementById('screen').innerHTML = globaal; // RESET 
+            Eerste = globaal;
+            Tweede = "";
+            Opperator = "";
+        }
     }
 </script>

@@ -4,7 +4,24 @@
 <head>
     <title>DataBase Distribution: Calculator </title>
     <link type="text/css" rel="stylesheet" href="calculator.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!--Externe hulp gevraagd voor dit gedeelte-->
 </head>
+
+<script>
+    var main = function () {
+        $('.calculator').on('click', '.number', function () {
+            $("input").val($("input").val() + $(this).data("no"));
+        })
+        $('.calculator').on('click', '.equal', function () {
+            $("input").val(eval($("input").val()));
+        })
+        $('.calculator').on('click', '.clear', function () {
+            $("input").val("");
+        })
+    }
+    $("document").ready(main); //Gaf fout melding. Externe hulp gevraagd
+</script>
 
 <body>
     <div class="calculator">
@@ -27,6 +44,7 @@
         <button class="equal">=</button>
         <button class="clear">C</button>
     </div>
+
 
 </body>
 

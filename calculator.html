@@ -5,12 +5,41 @@
 <!-- CSS Initiatie -->
 
 <script type="text/javascript">
-    <!-- Initiatie van het javascript-->
+    var globaal = "",
+        Eerste = "",
+        Tweede = "",
+        Opperator = "";
+    //Initiatie van het javascript met variabele
+    function Init() {
+        Reset();
+    }
+    //oproepen van de reset bij pagina load
     function Reset() {
         Eerste = "";
         Tweede = "";
         Opperator = "";
-        Overall = "";
+        globaal = "";
         document.getElementById('screen').innerHTML = '0';
+    }
+
+
+    function Click($key) {
+        var Display = "";
+        if (Opperator == "") {
+            Eerste = Eerste + $key;
+            document.getElementById('screen').innerHTML = Eerste;
+        } else {
+            Tweede = Tweede + $key;
+            Display = document.getElementById('screen').innerHTML;
+            document.getElementById('screen').innerHTML = Eerste + ' ' + Opperator + ' ' + Tweede;
+        }
+    }
+
+    function Operator($sign) {
+        var Display = "";
+        Opperator = $sign; // Om te zien of er al values in de 2 eerste getallen staan
+        if (Eerste != "" && Tweede != "") DoSum();
+        Display = document.getElementById('screen').innerHTML;
+        document.getElementById('screen').innerHTML = Display + ' ' + Opperator + ' ';
     }
 </script>
